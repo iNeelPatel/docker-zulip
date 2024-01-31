@@ -9,7 +9,9 @@ services:
       # Note that you need to do a manual `ALTER ROLE` query if you
       # change this on a system after booting the postgres container
       # the first time on a host.  Instructions are available in README.md.
-      POSTGRES_PASSWORD: "REPLACE_WITH_SECURE_POSTGRES_PASSWORD"
+      POSTGRES_PASSWORD: "309Z5ZIced70y9CjtgmTS"
+    ports:
+      - "5432:5432"
     volumes:
       - "postgresql-14:/var/lib/postgresql/data:rw"
   memcached:
@@ -26,13 +28,13 @@ services:
     environment:
       SASL_CONF_PATH: "/home/memcache/memcached.conf"
       MEMCACHED_SASL_PWDB: "/home/memcache/memcached-sasl-db"
-      MEMCACHED_PASSWORD: "REPLACE_WITH_SECURE_MEMCACHED_PASSWORD"
+      MEMCACHED_PASSWORD: "r4JLtHr86tomSr2j1AY97"
   rabbitmq:
     image: "rabbitmq:3.7.7"
     restart: unless-stopped
     environment:
       RABBITMQ_DEFAULT_USER: "zulip"
-      RABBITMQ_DEFAULT_PASS: "REPLACE_WITH_SECURE_RABBITMQ_PASSWORD"
+      RABBITMQ_DEFAULT_PASS: "iODHoIEq7hkbf2Q96iwaU"
     volumes:
       - "rabbitmq:/var/lib/rabbitmq:rw"
   redis:
@@ -45,7 +47,7 @@ services:
         echo "requirepass '$$REDIS_PASSWORD'" > /etc/redis.conf
         exec redis-server /etc/redis.conf
     environment:
-      REDIS_PASSWORD: "REPLACE_WITH_SECURE_REDIS_PASSWORD"
+      REDIS_PASSWORD: "8PkS7fuCz15Yi0uIlP81v"
     volumes:
       - "redis:/data:rw"
   zulip:
@@ -73,13 +75,13 @@ services:
       SECRETS_email_password: "123456789"
       # These should match RABBITMQ_DEFAULT_PASS, POSTGRES_PASSWORD,
       # MEMCACHED_PASSWORD, and REDIS_PASSWORD above.
-      SECRETS_rabbitmq_password: "REPLACE_WITH_SECURE_RABBITMQ_PASSWORD"
-      SECRETS_postgres_password: "REPLACE_WITH_SECURE_POSTGRES_PASSWORD"
-      SECRETS_memcached_password: "REPLACE_WITH_SECURE_MEMCACHED_PASSWORD"
-      SECRETS_redis_password: "REPLACE_WITH_SECURE_REDIS_PASSWORD"
-      SECRETS_secret_key: "REPLACE_WITH_SECURE_SECRET_KEY"
-      SETTING_EXTERNAL_HOST: "localhost.localdomain"
-      SETTING_ZULIP_ADMINISTRATOR: "admin@example.com"
+      SECRETS_rabbitmq_password: "iODHoIEq7hkbf2Q96iwaU"
+      SECRETS_postgres_password: "309Z5ZIced70y9CjtgmTS"
+      SECRETS_memcached_password: "r4JLtHr86tomSr2j1AY97"
+      SECRETS_redis_password: "8PkS7fuCz15Yi0uIlP81v"
+      SECRETS_secret_key: "q1OhagMku4qCbMSYc6rd0XlOWt"
+      SETTING_EXTERNAL_HOST: "dev-zulip.colligence.in"
+      SETTING_ZULIP_ADMINISTRATOR: "neelpatel.6531@gmail.com"
       SETTING_EMAIL_HOST: "" # e.g. smtp.example.com
       SETTING_EMAIL_HOST_USER: "noreply@example.com"
       SETTING_EMAIL_PORT: "587"
