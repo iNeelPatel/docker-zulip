@@ -10,6 +10,8 @@ services:
       # change this on a system after booting the postgres container
       # the first time on a host.  Instructions are available in README.md.
       POSTGRES_PASSWORD: "309Z5ZIced70y9CjtgmTS"
+    ports:
+      - "5432:5432"
     volumes:
       - "postgresql-14:/var/lib/postgresql/data:rw"
   memcached:
@@ -70,7 +72,7 @@ services:
       SETTING_MEMCACHED_LOCATION: "memcached:11211"
       SETTING_RABBITMQ_HOST: "rabbitmq"
       SETTING_REDIS_HOST: "redis"
-      SECRETS_email_password: "PHtE6r0MF+q5jmMv80RV56K7R5H2MI4q/e1mJQdDtdxBX/FRTE0H+It+wz++/hh7UfhGHf/OwINtsLmY4eOMJzy5NTkfDWqyqK3sx/VYSPOZsbq6x00esVkfdkfaV4Lnd9dp3CHeuNrSNA=="
+      SECRETS_email_password: "ybhbqbswbqdzsjtg"
       # These should match RABBITMQ_DEFAULT_PASS, POSTGRES_PASSWORD,
       # MEMCACHED_PASSWORD, and REDIS_PASSWORD above.
       SECRETS_rabbitmq_password: "iODHoIEq7hkbf2Q96iwaU"
@@ -80,8 +82,8 @@ services:
       SECRETS_secret_key: "q1OhagMku4qCbMSYc6rd0XlOWt"
       SETTING_EXTERNAL_HOST: "dev-zulip.colligence.in"
       SETTING_ZULIP_ADMINISTRATOR: "neelpatel.6531@gmail.com"
-      SETTING_EMAIL_HOST: "smtp.zeptomail.in" # e.g. smtp.example.com
-      SETTING_EMAIL_HOST_USER: "emailapikey"
+      SETTING_EMAIL_HOST: "smtp.gmail.com" # e.g. smtp.example.com
+      SETTING_EMAIL_HOST_USER: "neelpatel.2384@gmail.com"
       SETTING_EMAIL_PORT: "587"
       # It seems that the email server needs to use ssl or tls and can't be used without it
       SETTING_EMAIL_USE_SSL: "True"
